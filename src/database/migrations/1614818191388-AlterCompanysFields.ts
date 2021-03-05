@@ -10,7 +10,6 @@ export default class AlterCompanysFields1614818191388
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey('companys', 'CompanyProvider');
         await queryRunner.dropTable('companys');
-
         await queryRunner.createTable(
             new Table({
                 name: 'companies',

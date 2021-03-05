@@ -6,6 +6,7 @@ import CreateCompanyService from '../services/CreateCompanyService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import DeleteCompanyService from '../services/DeleteCompanyService';
+import UpdateCompanyService from '../services/UpdateCompanyService';
 
 const companiesRouter = Router();
 
@@ -54,6 +55,35 @@ companiesRouter.delete('/:id', async (request, response) => {
     const company = await deleteCompany.execute(id);
 
     return response.json(`Empresa ${company.razao} foi deletada`);
+});
+
+companiesRouter.put('/:id', async (request, response) => {
+    const { id } = request.params;
+    const {
+        razao,
+        cnpj,
+        endereco,
+        bairro,
+        estado,
+        cidade,
+        cep,
+        pais,
+    } = request.body;
+
+    const updateCompany = new UpdateCompanyService();
+
+    const company = await updateCompany.execute(id, {
+        razao,
+        cnpj,
+        endereco,
+        bairro,
+        estado,
+        cidade,
+        cep,
+        pais,
+    });
+
+    return response.json(company);
 });
 
 export default companiesRouter;
