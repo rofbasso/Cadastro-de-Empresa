@@ -8,9 +8,10 @@ import {
     JoinColumn,
 } from 'typeorm';
 
+import Company from './Company';
 import User from './User';
 
-@Entity('appointment')
+@Entity('appointments')
 class Appointment {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -22,8 +23,18 @@ class Appointment {
     @JoinColumn({ name: 'provider_id' })
     provider: User;
 
+    @Column()
+    company_id: string;
+
+    @ManyToOne(() => Company)
+    @JoinColumn({ name: 'company_id' })
+    company: Company;
+
     @Column('timestamp with time zone')
     date: Date;
+
+    @Column()
+    notes: string;
 
     @CreateDateColumn()
     created_at: Date;

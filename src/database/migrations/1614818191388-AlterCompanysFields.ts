@@ -19,6 +19,7 @@ export default class AlterCompanysFields1614818191388
                         type: 'uuid',
                         generationStrategy: 'uuid',
                         default: 'uuid_generate_v4()',
+                        isUnique: true,
                     },
                     {
                         name: 'razao',

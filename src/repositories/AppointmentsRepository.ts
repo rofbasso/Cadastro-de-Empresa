@@ -10,6 +10,22 @@ class AppointmentsRepository extends Repository<Appointment> {
 
         return findAppointment || null;
     }
+
+    // public async findByCompany(id: string): Promise<Appointment | null> {
+    //     const findAppointment = await this.findOne({
+    //         where: { company_id: id },
+    //     });
+
+    //     return findAppointment || null;
+    // }
+
+    // public async findByUser(id: string): Promise<Appointment | null> {
+    //     const findAppointment = await this.findOne({
+    //         where: { provider_id: id },
+    //     });
+
+    //     return findAppointment || null;
+    // }
 }
 
 export default AppointmentsRepository;

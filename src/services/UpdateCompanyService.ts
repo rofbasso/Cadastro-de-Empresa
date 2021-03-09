@@ -1,3 +1,4 @@
+import { toDate } from 'date-fns';
 import { getCustomRepository, Not } from 'typeorm';
 import CompaniesRepository from '../repositories/CompaniesRepository';
 import Company from '../models/Company';
@@ -56,7 +57,7 @@ class UpdateCompanyService {
             cidade,
             cep,
             pais,
-            updated_at: findCompany.updated_at,
+            updated_at: toDate(Date.now()),
             created_at: findCompany.created_at,
         };
 
